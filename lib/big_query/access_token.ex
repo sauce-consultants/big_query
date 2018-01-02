@@ -6,7 +6,7 @@ defmodule BigQuery.AccessToken do
   @spec get_token :: {:ok, String.t} | {:error, String.t}
   def get_token() do
     key_file = Application.get_env(:big_query, :bigquery_private_key_path)
-    key_json = File.read!(key_file)
+    key_json = File.read!(:code.priv_dir(key_file))
     key_map = JOSE.decode(key_json)
 
     jwk = JOSE.JWK.from_pem(key_map["private_key"])
@@ -45,4 +45,5 @@ defmodule BigQuery.AccessToken do
         {:error, HTTPoison.Error.message(error)}
     end
   end
+
 end
