@@ -5,7 +5,8 @@ defmodule BigQuery.Types.Table do
             tableReference: nil, friendlyName: nil, description: nil,
             schema: nil, numBytes: nil, numRows: nil, creationTime: nil,
             expirationTime: nil, lastModifiedTime: nil, type: nil, view: nil,
-            externalDataConfiguration: nil, location: nil, streamingBuffer: nil
+            externalDataConfiguration: nil, location: nil, streamingBuffer: nil,
+            timePartitioning: nil
 
   @type t :: %__MODULE__{
     creationTime: non_neg_integer,
@@ -25,7 +26,8 @@ defmodule BigQuery.Types.Table do
     streamingBuffer: map(),
     tableReference: TableReference.t,
     type: String.t,
-    view: map()
+    view: map(),
+    timePartitioning: map()
   }
 end
 
